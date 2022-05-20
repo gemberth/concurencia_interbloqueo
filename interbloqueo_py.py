@@ -35,21 +35,33 @@ def puede_ejecutar(asignados, disponibles, maximos):
 # mayores o iguales a los requeridos para ejecutar. Existencia = Disponibles + Asignados.
 
 #---------------------------------------------------------------------------------------#
-
-# EJEMPLO 1 - Estado seguro
+maximos = [
+    [3,2,2],
+    [6,1,3],
+    [3,1,4],
+    [4,2,2]
+    ]
 asignados = [
     [1,0,0],
-    [1,1,0],
-    [0,1,0]
+    [6,1,2],
+    [2,1,1],
+    [0,0,2]
     ]
+disponibles = [0,1,1]
+# EJEMPLO 1 - Estado seguro
+# asignados = [
+#     [1,0,0],
+#     [1,1,0],
+#     [0,1,0]
+#     ]
 
-maximos = [
-    [1,1,0],
-    [1,1,0],
-    [1,1,0]
-    ]
+# maximos = [
+#     [1,1,0],
+#     [1,1,0],
+#     [1,1,0]
+#     ]
 
-disponibles = [0,0,1]
+# disponibles = [0,0,1]
 
 # EJEMPLO 2 - Interbloqueo
 # asignados = [

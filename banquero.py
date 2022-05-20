@@ -31,6 +31,21 @@ disponibles = [0,1,1]
 #     [1,1,1,1,0]
 #     ]
 # disponibles = [0,0,2,1,1]
+# EJEMPLO 2 - Interbloqueo
+# asignados = [
+#     [1,0,0],
+#     [0,1,0],
+#     [0,0,0],
+#     [0,0,1]
+#     ]
+
+# maximos = [
+#     [1,1,0],
+#     [1,1,0],
+#     [0,1,1],
+#     [0,0,1]
+#     ]
+# disponibles = [0,0,0]
 
 def comprueba_configuracion(asignados, maximos, disponibles):
     finalizados = []
