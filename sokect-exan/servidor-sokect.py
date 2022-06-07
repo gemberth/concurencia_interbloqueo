@@ -1,5 +1,6 @@
 import socket
 from db import  get_user
+import pymongo as pm
 
 # Bind the socket to the port
 HOST = 'localhost'                 # Symbolic name meaning all available interfaces
@@ -14,7 +15,10 @@ sock.bind((HOST, PORT))
 # Listen for incoming connections
 sock.listen(1)
 
-
+cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
+db=cliente.get_database("datos_usuarios")
+coleccion=db.get_collection("usuarios")
+# usuario=coleccion.find_one({"id":"1"}) 
 while True:
     # espera la conn.
     print('Esperando conectar con un cliente')
@@ -27,7 +31,7 @@ while True:
             print('-------------------------------')
             data = connection.recv(mBuffer)#16
             decodificado = data.decode("utf-8")
-            dataConsulta = get_user(decodificado)
+            dataConsulta =  usuario=coleccion.find_one({"cedula":decodificado}) 
             usuario = str(dataConsulta)
             # print('Recibiendo dato: {!r}'.format(data))
             

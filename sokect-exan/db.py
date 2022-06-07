@@ -1,20 +1,28 @@
 import pymongo as pm
+import asyncio
 
-def get_user(cedula):
+async def get_user(cedula):
     cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
     db=cliente.get_database("datos_usuarios")
     coleccion=db.get_collection("usuarios")
     usuario=coleccion.find_one({"cedula":cedula}) 
     # if len(usuario)==0:
     #     return 'No existe el usuario con cedula: '+cedula
-    cliente.close()
+
     
     return usuario
     
 # cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
 # db=cliente.get_database("datos_usuarios")
 # coleccion=db.get_collection("usuarios")
-# usuario=coleccion.find_one({"id":"1"}) 
+# usuario=coleccion.insert_one({
+#             'id': '8',
+#             'nombre':'Stiven',
+#             'apellido':'Portillo',
+#             'edad':'26',
+#             'cedula':'130888',
+#             'Saldo':'5988$'
+#         },) 
 # print(usuario)
 
 
