@@ -3,7 +3,8 @@ from db import  get_user
 import pymongo as pm
 
 # Bind the socket to the port
-HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
+# HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
+HOST = 'localhost'                 # Symbolic name meaning all available interfaces
 PORT = 50007  
 mBuffer=1024
 
@@ -32,12 +33,12 @@ while True:
             data = connection.recv(mBuffer)#16
             decodificado = data.decode("utf-8")
             dataConsulta =  usuario=coleccion.find_one({"cedula":decodificado}) 
-            usuario = str(dataConsulta)
+            usuario = dataConsulta
             # print('Recibiendo dato: {!r}'.format(data))
             
             if data:
                 print('Enviando respuesta al cliente')
-                datoUsuario = usuario.encode()
+                datoUsuario = usuario.encode(encoding='UTF-8')
                 connection.sendall(datoUsuario)
             else:#No existe datos, client_address
                 break

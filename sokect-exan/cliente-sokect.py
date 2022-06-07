@@ -8,7 +8,8 @@ import re
 from tkinter import END
 
 
-HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
+# HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
+HOST = 'localhost'                 # Symbolic name meaning all available interfaces
 PORT = 50007
 mBuffer=1024
 
@@ -40,9 +41,9 @@ try:
     while amount_received < amount_expected:
          data = sock.recv(mBuffer)
          amount_received += len(data)
-         string = data.decode("utf-8") 
+         string = data.decode() 
         # string = string.replace("\'", "")   
-         string = re.sub("\!|\'|\?","",string)
+        #  string = re.sub("\!|\'|\?","",string)
         #string=re.sub(r"^\s+|\s+$", "", string)  
         
       
@@ -51,9 +52,9 @@ try:
          else:
             
                
-            datosF = dict(toks.split(":") for toks in string.split(",") if toks)     
+            datosF = json.loads(string)     
             # print(datosF)
-            print("\033[;32m"+'\nNombres: {}{}\nEdad: {}\nSaldo{}\n'.format(datosF[" nombre"],datosF[" apellido"],datosF[" edad"],datosF[" Saldo"]))
+            print("\033[;32m"+'\nNombres: {}{}\nEdad: {}\nSaldo{}\n'.format(datosF["nombre"],datosF["apellido"],datosF["edad"],datosF["Saldo"]))
             
           
             # print(datosF[" cedula"])
