@@ -3,7 +3,7 @@ from db import  get_user
 import pymongo as pm
 
 # Bind the socket to the port
-HOST = 'localhost'                 # Symbolic name meaning all available interfaces
+HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
 PORT = 50007  
 mBuffer=1024
 
