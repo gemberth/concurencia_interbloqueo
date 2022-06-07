@@ -1,9 +1,7 @@
 import pymongo as pm
 
-
-
 def get_user(cedula):
-    cliente= pm.MongoClient('localhost', 27017)
+    cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
     db=cliente.get_database("datos_usuarios")
     coleccion=db.get_collection("usuarios")
     usuario=coleccion.find_one({"cedula":cedula}) 
@@ -12,6 +10,14 @@ def get_user(cedula):
     cliente.close()
     
     return usuario
+    
+# cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
+# db=cliente.get_database("datos_usuarios")
+# coleccion=db.get_collection("usuarios")
+# usuario=coleccion.find_one({"id":"1"}) 
+# print(usuario)
+
+
 
 # ced=get_user("1302222222")
 # print(ced)
