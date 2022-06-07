@@ -33,12 +33,12 @@ while True:
             data = connection.recv(mBuffer)#16
             decodificado = data.decode("utf-8")
             dataConsulta =  usuario=coleccion.find_one({"cedula":decodificado}) 
-            usuario = dataConsulta
+            usuario = str(dataConsulta)
+            datoUsuario = usuario.encode(encoding='UTF-8')
             # print('Recibiendo dato: {!r}'.format(data))
             
             if data:
-                print('Enviando respuesta al cliente')
-                datoUsuario = usuario.encode(encoding='UTF-8')
+                print('Enviando respuesta al cliente')                
                 connection.sendall(datoUsuario)
             else:#No existe datos, client_address
                 break
