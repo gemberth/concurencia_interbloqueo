@@ -1,1 +1,0 @@
-usuario=coleccion.find_one({"id":"1"}) 
