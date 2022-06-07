@@ -1,12 +1,8 @@
 
 import socket
-import sys
-import json
-import ast
-import base64
-import re
+import json 
 from tkinter import END
-
+# import yaml
 
 # HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
 HOST = 'localhost'                 # Symbolic name meaning all available interfaces
@@ -32,8 +28,7 @@ try:
     message = cedula#' '.join(sys.argv[1:]) or 'Mensaje de prueba que se envia al servidor y retorna al cliente'
     # se envia
     print("\033[;32m"+'Enviando {!r}'.format(message))
-    sock.sendall(str.encode(message))
-    
+    sock.sendall(str.encode(message))    
     # Look for the response
     amount_received = 0
     amount_expected = len(message)
@@ -41,42 +36,16 @@ try:
     while amount_received < amount_expected:
          data = sock.recv(mBuffer)
          amount_received += len(data)
-         string = data.decode() 
-        # string = string.replace("\'", "")   
-        #  string = re.sub("\!|\'|\?","",string)
-        #string=re.sub(r"^\s+|\s+$", "", string)  
-        
-      
-         if string == 'None' :
+         string = data.decode()        
+         if string == 'None' or string == 'null':
              print("\033[;31m"+'No se encontro el usuario')
-         else:
+         else:   
             
+            datosF=json.loads(string)    
+            print(type(datosF))       
+            print("\033[;36m"+'\nNombres: {} {}\nEdad: {}\nSaldo {}\n'.format(datosF["nombre"],datosF["apellido"],datosF["edad"],datosF["Saldo"]))
                
-            datosF = json.loads(string)     
-            # print(datosF)
-            print("\033[;32m"+'\nNombres: {}{}\nEdad: {}\nSaldo{}\n'.format(datosF["nombre"],datosF["apellido"],datosF["edad"],datosF["Saldo"]))
-            
-          
-            # print(datosF[" cedula"])
-            
-            # print("\033[;32m"+'Datos del usuario:')
-            # print("\033[;32m"+'Nombre:',datosF['nombre'])
-            # print("\033[;32m"+'Apellido:',datosF['apellido'])
-            # print("\033[;32m"+'Edad:',datosF['edad'])
-            # print("\033[;32m"+'Cedula:',datosF['cedula'])
-            # print("\033[;32m"+'Saldo:',datosF['Saldo'])
-
-            # data = data.replace("\'", "\"")
-            # output_dict = json.loads(data) 
-            # data=data.decode('utf-8')
-            # data = data.replace("\'", "\"")
-            # ascii_message = data.encode('ascii')
-            # output_byte = base64.b64encode(ascii_message)
-
-             # convert string dictionary to dict format
-         #print('received {!r}'.format(data))
-    
 finally:
-    print('closing socket')
+    print("\033[;32m"+'closing socket')
     sock.close()
 

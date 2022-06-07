@@ -1,3 +1,4 @@
+import json
 import socket
 from db import  get_user
 import pymongo as pm
@@ -33,7 +34,7 @@ while True:
             data = connection.recv(mBuffer)#16
             decodificado = data.decode("utf-8")
             dataConsulta =  usuario=coleccion.find_one({"cedula":decodificado}) 
-            usuario = str(dataConsulta)
+            usuario = json.dumps(dataConsulta,default=str)
             datoUsuario = usuario.encode(encoding='UTF-8')
             # print('Recibiendo dato: {!r}'.format(data))
             
