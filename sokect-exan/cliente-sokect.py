@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created and adapted on Fri Nov 4 14:44:26 2021
-@author: Willian
-"""
 
 
 import socket
