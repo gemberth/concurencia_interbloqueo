@@ -8,7 +8,7 @@ import re
 from tkinter import END
 
 
-HOST = 'localhost'                 # Symbolic name meaning all available interfaces
+HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
 PORT = 50007
 mBuffer=1024
 
