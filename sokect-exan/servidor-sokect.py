@@ -1,10 +1,10 @@
 import json
 import socket
-from db import  get_user
+# from db import  get_user
 import pymongo as pm
 
 # Bind the socket to the port
-HOST = '25.11.139.228'                 # Symbolic name meaning all available interfaces
+HOST = 'localhost'                 # Symbolic name meaning all available interfaces
 # HOST = 'localhost'                 # Symbolic name meaning all available interfaces
 PORT = 50007  
 mBuffer=1024
@@ -17,8 +17,10 @@ sock.bind((HOST, PORT))
 # Listen for incoming connections
 sock.listen(1)
 
-cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
-db=cliente.get_database("datos_usuarios")
+# cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
+cliente= pm.MongoClient('mongodb://facci:asd@192.168.0.126:27017/dbprueba')
+# db=cliente.get_database("datos_usuarios")
+db=cliente.get_database("dbprueba")
 coleccion=db.get_collection("usuarios")
 # usuario=coleccion.find_one({"id":"1"}) 
 while True:

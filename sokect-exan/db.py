@@ -2,7 +2,7 @@ import pymongo as pm
 import asyncio
 
 async def get_user(cedula):
-    cliente= pm.MongoClient('mongodb+srv://aeiou2022:facci2022@cluster0.pj50i.mongodb.net/?retryWrites=true&w=majority')
+    cliente= pm.MongoClient('mongodb://facci:asd@192.168.0.125:27017/dbprueba')
     db=cliente.get_database("datos_usuarios")
     coleccion=db.get_collection("usuarios")
     usuario=coleccion.find_one({"cedula":cedula}) 
@@ -69,6 +69,16 @@ async def get_user(cedula):
 
 
 # })
+
+cliente= pm.MongoClient('mongodb://administrador:asd123@server-quito,server-manta,server-guayaquil/?replicaSet=rsfacci&authMechanism=DEFAULT')
+db=cliente.get_database("dbprueba")
+coleccion=db.get_collection("usuarios")
+# usuario=coleccion.find_one({"cedula":cedula})
+usuarios1=coleccion.find( {})
+print(usuarios1)
+print('------')
+for usuario in usuarios1:
+    print(usuario)
 # coleccion.insert_many(
 #     [ 
 #         {
