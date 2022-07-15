@@ -6,18 +6,17 @@ try:
     cliente="mongodb://administrador:asd123@server-quito,server-manta,server-guayaquil/?replicaSet=rsfacci&authMechanism=DEFAULT"    
     connection = pm.MongoClient(cliente, 27017, serverSelectionTimeoutMS=30000, connectTimeoutMS=30000, socketTimeoutMS=30000)
     
-    mydb = connection["colegio"]
-    mycol = mydb["docentes"]
+    mydb = connection["escuela"]
+    mycol = mydb["estudiantes"]
     x=int(input("Ingrese el numero de registros a registrar: "))
     for i in range(1,x+1):
         mydict = {
                 'id': str(i),
-                'nombre':'Roberto'+str(i),
-                'apellido':'Zambrano',
-                'edad':'36',
-                'cedula':'1314589765',
+                'nombre':'Eduardo'+str(i),
+                'apellido':'Portillo',
+                'edad':'26',
+                'cedula':'130888',
                 'Grado':'8vo',
-                'Materia':'Fisica',
                     }
         
         
